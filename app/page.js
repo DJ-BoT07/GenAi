@@ -1,7 +1,7 @@
 import Leaderboard from './components/Leaderboard'
 
 export const metadata = {
-  title: 'GenAI Leaderboard | GDSC DY Patil',
+  title: 'GenAI Leaderboard | GDGC DYPCOE',
   description: 'Track your progress and compete with other participants in the GenAI learning journey at GDSC DY Patil College of Engineering.',
   keywords: ['GenAI', 'GDSC', 'DY Patil', 'Leaderboard', 'AI Learning', 'Google Developer Student Clubs'],
   openGraph: {
