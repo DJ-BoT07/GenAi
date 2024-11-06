@@ -59,7 +59,7 @@ function CountdownTimer() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section - Updated with richer dark colors */}
+      {/* Hero Section - Added responsive padding */}
       <div className="h-screen bg-[url('/gdg-bg.jpg')] bg-cover bg-center text-white relative overflow-hidden flex flex-col">
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A]/90 via-[#1E1B4B]/90 to-[#312E81]/90"></div>
@@ -109,14 +109,14 @@ function CountdownTimer() {
           </div>
         </motion.div>
 
-        {/* Main Content - Updated gradients */}
+        {/* Main Content - Updated padding for mobile */}
         <div className="flex-1 flex flex-col items-center justify-center">
-          <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <motion.div 
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="mb-12 relative"
+              className="mb-8 sm:mb-12 relative px-4 sm:px-0"
             >
               <motion.div
                 className="absolute -inset-1 bg-gradient-to-r from-[#60A5FA]/20 to-[#34D399]/20 rounded-lg blur"
@@ -126,7 +126,7 @@ function CountdownTimer() {
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
               />
-              <h1 className="text-5xl md:text-7xl font-extrabold mb-6 flex items-center justify-center gap-3">
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-extrabold mb-3 sm:mb-6 flex flex-wrap items-center justify-center gap-1 xs:gap-2 sm:gap-3">
                 <motion.span 
                   className="text-white"
                   animate={{ x: [-20, 0], opacity: [0, 1] }}
@@ -142,9 +142,9 @@ function CountdownTimer() {
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                    className="absolute -right-8 -top-8"
+                    className="absolute -right-6 -top-6 sm:-right-8 sm:-top-8"
                   >
-                    <Sparkles className="h-6 w-6 text-[#FBBC05]" />
+                    <Sparkles className="h-4 w-4 sm:h-6 sm:w-6 text-[#FBBC05]" />
                   </motion.div>
                   <span className="text-white">AI</span>
                 </motion.div>
@@ -156,65 +156,67 @@ function CountdownTimer() {
                   Study Jams
                 </motion.span>
               </h1>
-              <div className="text-2xl font-bold text-white tracking-wide">
+              <div className="text-lg xs:text-xl sm:text-2xl font-bold text-white tracking-wide">
                 by GDGC DYPCOE
               </div>
             </motion.div>
 
-            {/* Timer */}
-            <div className="mb-12 space-y-6">
-              <div className="text-sm uppercase tracking-widest text-blue-200 flex items-center justify-center gap-2">
+            {/* Timer - Updated spacing for mobile */}
+            <div className="mb-8 sm:mb-12 space-y-4 sm:space-y-6">
+              <div className="text-xs sm:text-sm uppercase tracking-widest text-blue-200 flex items-center justify-center gap-2">
                 Time Remaining ⌛
               </div>
-              <div className="flex justify-center gap-8">
+              <div className="flex justify-center gap-3 sm:gap-8">
                 {Object.entries(timeLeft).map(([unit, value]) => (
-                  <div key={unit} className="flex flex-col items-center gap-3">
-                    <FlipNumber number={value} />
-                    <div className="text-sm uppercase tracking-wider text-blue-200/80">{unit}</div>
+                  <div key={unit} className="flex flex-col items-center gap-2 sm:gap-3">
+                    <div className="scale-75 sm:scale-100">
+                      <FlipNumber number={value} />
+                    </div>
+                    <div className="text-xs sm:text-sm uppercase tracking-wider text-blue-200/80">{unit}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Google Developer Groups Logo */}
+            {/* Google Developer Groups Logo - Updated for mobile */}
             <motion.div 
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="inline-flex justify-center items-center gap-4 p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 mx-auto"
+              className="inline-flex justify-center items-center gap-3 sm:gap-4 p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-white/10 mx-auto"
             >
               <Image 
                 src="/gdgc.svg"
                 alt="GDSC Logo"
                 width={48}
                 height={48}
-                className="w-12 h-12"
+                className="w-8 h-8 sm:w-12 sm:h-12"
               />
               <div>
-                <div className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                <div className="text-base sm:text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
                   Google Developer Groups
                 </div>
-                <div className="text-sm text-blue-200/80">
+                <div className="text-xs sm:text-sm text-blue-200/80">
                   On Campus • D. Y. Patil College of Engineering, Pune
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center h-32 bg-gradient-to-t from-black/20 to-transparent">
+          {/* Scroll Indicator - Updated for mobile */}
+          <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center h-24 sm:h-32 bg-gradient-to-t from-black/20 to-transparent">
             <motion.div 
               className="flex flex-col items-center"
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="text-white/80 text-sm mb-3 font-medium">
+              <div className="text-white/80 text-xs sm:text-sm mb-2 sm:mb-3 font-medium">
                 Scroll to see leaderboard
               </div>
-              <div className="w-6 h-10 border-2 border-white/80 rounded-full flex justify-center relative">
+              <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-white/80 rounded-full flex justify-center relative">
                 <motion.div
-                  className="absolute w-1.5 h-1.5 bg-white/80 rounded-full"
-                  animate={{ y: [4, 20, 4] }}
+                  className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white/80 rounded-full"
+                  animate={{ y: [4, 16, 4] }}
                   transition={{ 
                     duration: 1.5,
                     repeat: Infinity,
