@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Check, Sparkles } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Leaderboard from './Leaderboard'
+import Image from 'next/image'
 
 function FlipNumber({ number }) {
   return (
@@ -182,7 +183,13 @@ function CountdownTimer() {
               transition={{ duration: 0.5, delay: 0.8 }}
               className="inline-flex justify-center items-center gap-4 p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 mx-auto"
             >
-              <img src="/gdgc.svg" alt="GDGC Logo" className="h-16 w-16" />
+              <Image 
+                src="/gdgc.svg"
+                alt="GDSC Logo"
+                width={48}
+                height={48}
+                className="w-12 h-12"
+              />
               <div>
                 <div className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
                   Google Developer Groups

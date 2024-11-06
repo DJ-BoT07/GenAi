@@ -1,4 +1,5 @@
-import Leaderboard from './components/Leaderboard'
+
+import CountdownTimer from './components/CountdownTimer'
 
 export const metadata = {
   title: 'GenAI Leaderboard | GDGC DYPCOE',
@@ -23,6 +24,7 @@ export default function Home() {
   return (
     <main className="min-h-screen p-4 md:p-8">
       <CountdownTimer />
+  
     </main>
   )
 }
