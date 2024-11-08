@@ -32,30 +32,60 @@ function FlipNumber({ number }) {
 
 function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({
-    days: 8,
-    hours: 22,
-    minutes: 41,
-    seconds: 32
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
   })
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 }
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 }
-        } else if (prev.hours > 0) {
-          return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 }
-        } else if (prev.days > 0) {
-          return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 }
+    function calculateTimeLeft() {
+      // Set deadline to November 16th, 2024, 23:59:59 in user's local timezone
+      const deadline = new Date('2024-11-16T23:59:59').getTime()
+      const now = Date.now() // Get current time in milliseconds
+      const difference = deadline - now
+
+      // If deadline has passed
+      if (difference <= 0) {
+        return {
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0
         }
-        return prev
-      })
+      }
+
+      // Calculate time units
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24))
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000)
+
+      return {
+        days,
+        hours,
+        minutes,
+        seconds
+      }
+    }
+
+    // Calculate initial time left
+    setTimeLeft(calculateTimeLeft())
+
+    // Update timer every second
+    const timer = setInterval(() => {
+      const timeLeft = calculateTimeLeft()
+      setTimeLeft(timeLeft)
+
+      // If deadline has passed, clear interval
+      if (Object.values(timeLeft).every(value => value === 0)) {
+        clearInterval(timer)
+      }
     }, 1000)
 
+    // Cleanup on unmount
     return () => clearInterval(timer)
-  }, [])
+  }, []) // Empty dependency array means this effect runs once on mount
 
   return (
     <div className="min-h-screen">
