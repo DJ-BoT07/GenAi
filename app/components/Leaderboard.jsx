@@ -139,7 +139,7 @@ export default function Leaderboard() {
       {/* Footer with Update Info */}
       <div className="mt-8 pt-4 border-t border-white/10 text-center">
         <div className="text-sm text-gray-400">
-          Last updated: November 7, 2023 at 20:00 IST
+          Last updated: November 15, 2024 at 12:00 IST
         </div>
       </div>
     </div>
